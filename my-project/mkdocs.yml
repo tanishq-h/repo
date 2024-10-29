@@ -1,0 +1,18 @@
+site_url: ""
+site_name: Energy Efficiency ETL Documentation
+use_directory_urls: false
+plugins: []
+nav:
+    - Home: 
+        - index.md
+        - Framework: framework.md
+    - Configs:
+        - Hourly Generation: file:///C:/EIA_TASK/my-project/docs/configs/hourly_generation_by_energy_source.md
+        - Electricity Sales: file:///C:/EIA_TASK/my-project/docs/configs/electricity_sales_to_customers.md
+    - Fetch:
+        - EIA: file:///C:/EIA_TASK/my-project/docs/fetch/provider/EIA.md
+    - Ingest:
+        - XATA: file:///C:/EIA_TASK/my-project/docs/ingest/provider/xata.md
+    - Main Logic: file:///C:/EIA_TASK/my-project/docs/main.md
+    - Utilities: file:///C:/EIA_TASK/my-project/docs/utils.md
+# theme: readthedocs
