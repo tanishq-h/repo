@@ -16,3 +16,6 @@ nav:
     - Main Logic: file:///C:/EIA_TASK/my-project/docs/main.md
     - Utilities: file:///C:/EIA_TASK/my-project/docs/utils.md
 # theme: readthedocs
+permissions:
+  id-token: write
+  pages: write
