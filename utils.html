@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Utils - Energy Efficiency ETL Documentation</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Energy Efficiency ETL Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Home</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="index.html" class="dropdown-item">Welcome to Energy Efficiency ETL Documentation</a>
+</li>
+                                    
+<li>
+    <a href="framework.html" class="dropdown-item">Framework</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Configs</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/configs/hourly_generation_by_energy_source.md" class="dropdown-item">Hourly Generation</a>
+</li>
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/configs/electricity_sales_to_customers.md" class="dropdown-item">Electricity Sales</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Fetch</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/fetch/provider/EIA.md" class="dropdown-item">EIA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Ingest</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/ingest/provider/xata.md" class="dropdown-item">XATA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="file:///C:/EIA_TASK/my-project/docs/main.md" class="nav-link">Main Logic</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="file:///C:/EIA_TASK/my-project/docs/utils.md" class="nav-link">Utilities</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#utilities-documentation" class="nav-link">Utilities Documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="utilities-documentation">Utilities Documentation</h2>
+<h3 id="overview">Overview</h3>
+<p>The <code>utils.py</code> module contains utility classes that assist in loading configuration parameters and handling data preprocessing rules. This module plays a crucial role in ensuring that the ETL pipeline can read and manipulate configuration files effectively.</p>
+<h3 id="classes">Classes</h3>
+<h4 id="1-configparamsloader">1. ConfigParamsLoader</h4>
+<p>The <code>ConfigParamsLoader</code> class is responsible for loading and retrieving configuration parameters from a specified JSON file. This includes details about data providers, ingestion targets, and rules for data processing.</p>
+<h5 id="initialization">Initialization</h5>
+<pre><code class="language-python">def __init__(self, config_path: str):
+</code></pre>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li>
+<p><code>config_path</code> (str): The path to the JSON configuration file.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Initializes the <code>ConfigParamsLoader</code> instance with the specified configuration path, allowing subsequent methods to access the configuration data.</p>
+</li>
+</ul>
+<h5 id="method-_load_config">Method: _load_config()</h5>
+<pre><code class="language-python">def _load_config(self):
+</code></pre>
+<ul>
+<li><strong>Returns:</strong></li>
+<li>
+<p><code>dict</code>: The contents of the JSON configuration file.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Loads the JSON configuration file and returns it as a Python dictionary. This internal method is used by other methods to access configuration values.</p>
+</li>
+</ul>
+<h5 id="method-get_provider_name">Method: get_provider_name()</h5>
+<pre><code class="language-python">def get_provider_name(self):
+</code></pre>
+<ul>
+<li><strong>Returns:</strong></li>
+<li>
+<p><code>str</code>: The provider name specified in the configuration.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Retrieves the provider name from the configuration, allowing the ETL pipeline to know which data source to use for fetching data.</p>
+</li>
+</ul>
+<h5 id="method-get_target">Method: get_target()</h5>
+<pre><code class="language-python">def get_target(self):
+</code></pre>
+<ul>
+<li><strong>Returns:</strong></li>
+<li>
+<p><code>str</code>: The target specified in the config for data ingestion.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Fetches the target for data ingestion, which helps in directing the processed data to the appropriate database or storage solution.</p>
+</li>
+</ul>
+<hr />
+<h4 id="2-loadrule">2. LoadRule</h4>
+<p>The <code>LoadRule</code> class is responsible for loading and managing rules related to data preprocessing. This includes symbol replacements and null value replacements as defined in the configuration.</p>
+<h5 id="initialization_1">Initialization</h5>
+<pre><code class="language-python">def __init__(self, config_path: str):
+</code></pre>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li>
+<p><code>config_path</code> (str): The path to the JSON configuration file.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Initializes the <code>LoadRule</code> instance with the configuration path, enabling the loading of preprocessing rules from the configuration.</p>
+</li>
+</ul>
+<h5 id="method-_load_config_1">Method: _load_config()</h5>
+<pre><code class="language-python">def _load_config(self):
+</code></pre>
+<ul>
+<li><strong>Returns:</strong></li>
+<li>
+<p><code>dict</code>: The contents of the JSON configuration file.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Loads the JSON configuration file similarly to <code>ConfigParamsLoader</code>, used to access the preprocessing rules.</p>
+</li>
+</ul>
+<h5 id="method-load_symbol_replacement">Method: load_symbol_replacement()</h5>
+<pre><code class="language-python">def load_symbol_replacement(self):
+</code></pre>
+<ul>
+<li><strong>Returns:</strong></li>
+<li>
+<p><code>dict</code>: The symbol replacement rules specified in the configuration.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Retrieves the rules for symbol replacement from the configuration. This includes the symbols to be replaced and their corresponding replacements.</p>
+</li>
+</ul>
+<h5 id="method-load_null_value_replacement">Method: load_null_value_replacement()</h5>
+<pre><code class="language-python">def load_null_value_replacement(self):
+</code></pre>
+<ul>
+<li><strong>Returns:</strong></li>
+<li>
+<p><code>dict</code>: The null value replacement rules specified in the configuration.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Fetches the null value replacement rules from the configuration, specifying what value should be used to replace nulls in the data.</p>
+</li>
+</ul>
+<hr />
+<h4 id="3-datapreprocessor">3. DataPreprocessor</h4>
+<p>The <code>DataPreprocessor</code> class is responsible for applying preprocessing rules to the fetched data. This includes replacing specified symbols in column headers and filling null values in the DataFrame.</p>
+<h5 id="initialization_2">Initialization</h5>
+<pre><code class="language-python">def __init__(self, symbol_replacement, null_value_replacement):
+</code></pre>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>symbol_replacement</code> (dict): A dictionary containing symbol replacement rules.</li>
+<li>
+<p><code>null_value_replacement</code> (dict): A dictionary containing null value replacement rules.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Initializes the <code>DataPreprocessor</code> with the specified rules for symbol and null value replacements, setting up the instance for data cleaning operations.</p>
+</li>
+</ul>
+<h5 id="method-replace_symbols">Method: replace_symbols()</h5>
+<pre><code class="language-python">def replace_symbols(self, df):
+</code></pre>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li>
+<p><code>df</code> (pd.DataFrame): The DataFrame whose column headers will be modified.</p>
+</li>
+<li>
+<p><strong>Returns:</strong></p>
+</li>
+<li>
+<p><code>pd.DataFrame</code>: The DataFrame with modified column headers.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Iterates over the defined symbol replacement rules and applies them to the column headers of the provided DataFrame. Symbols specified in the rules are replaced with their designated replacements.</p>
+</li>
+</ul>
+<h5 id="method-replace_null">Method: replace_null()</h5>
+<pre><code class="language-python">def replace_null(self, df):
+</code></pre>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li>
+<p><code>df</code> (pd.DataFrame): The DataFrame in which null values will be replaced.</p>
+</li>
+<li>
+<p><strong>Returns:</strong></p>
+</li>
+<li>
+<p><code>pd.DataFrame</code>: The DataFrame with null values replaced.</p>
+</li>
+<li>
+<p><strong>Description:</strong>
+  Fills null values in the DataFrame with the specified replacement value. This ensures that the DataFrame does not contain any null entries before ingestion.</p>
+</li>
+</ul>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>The <code>utils.py</code> module provides essential utility functions that facilitate the smooth operation of the ETL pipeline. The <code>ConfigParamsLoader</code> allows for the easy loading of configuration parameters, while the <code>LoadRule</code> and <code>DataPreprocessor</code> classes enable effective data cleaning and preparation for ingestion. This modular approach ensures that the ETL process remains flexible and maintainable.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

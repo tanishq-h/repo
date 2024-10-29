@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Hourly Generation by Energy Source Configuration - Energy Efficiency ETL Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Energy Efficiency ETL Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Home</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../index.html" class="dropdown-item">Welcome to Energy Efficiency ETL Documentation</a>
+</li>
+                                    
+<li>
+    <a href="../framework.html" class="dropdown-item">Framework</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Configs</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/configs/hourly_generation_by_energy_source.md" class="dropdown-item">Hourly Generation</a>
+</li>
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/configs/electricity_sales_to_customers.md" class="dropdown-item">Electricity Sales</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Fetch</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/fetch/provider/EIA.md" class="dropdown-item">EIA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Ingest</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="file:///C:/EIA_TASK/my-project/docs/ingest/provider/xata.md" class="dropdown-item">XATA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="file:///C:/EIA_TASK/my-project/docs/main.md" class="nav-link">Main Logic</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="file:///C:/EIA_TASK/my-project/docs/utils.md" class="nav-link">Utilities</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#hourly-generation-by-energy-source-configuration" class="nav-link">Hourly Generation by Energy Source Configuration</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configuration-structure" class="nav-link">Configuration Structure</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#conclusion" class="nav-link">Conclusion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="hourly-generation-by-energy-source-configuration">Hourly Generation by Energy Source Configuration</h1>
+<h2 id="overview">Overview</h2>
+<p>This configuration file is used to fetch hourly generation data by energy source from the EIA API. It contains details about the data provider, API endpoint, parameters for the API request, and rules for data transformation before ingestion into the Xata database.</p>
+<h2 id="configuration-structure">Configuration Structure</h2>
+<h4 id="providers"><strong>Providers</strong></h4>
+<p>The <code>providers</code> section contains all the necessary information to access the provider API.</p>
+<ul>
+<li><strong>provider</strong>: </li>
+<li><strong>Type</strong>: <code>string</code></li>
+<li>
+<p><strong>Description</strong>: Specifies the data provider. In our case, it is set to "EIA".</p>
+</li>
+<li>
+<p><strong>base_url</strong>: </p>
+</li>
+<li><strong>Type</strong>: <code>string</code></li>
+<li><strong>Description</strong>: The base URL for the EIA API endpoint from which the data will be fetched.</li>
+<li>
+<p><strong>Example</strong>: <code>https://api.eia.gov/v2/electricity/rto/fuel-type-data/data/</code></p>
+</li>
+<li>
+<p><strong>params</strong>: </p>
+</li>
+<li><strong>Type</strong>: <code>object</code></li>
+<li><strong>Description</strong>: Contains various parameters for the API request.</li>
+</ul>
+<h4 id="params-details"><strong>Params Details</strong></h4>
+<ul>
+<li>
+<p><strong>frequency</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>string</code></li>
+<li><strong>Description</strong>: The frequency of the data. Here, it is set to "hourly".</li>
+</ul>
+</li>
+<li>
+<p><strong>data</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>array</code></li>
+<li><strong>Description</strong>: Specifies which data fields to retrieve. </li>
+<li><strong>Example</strong>: <code>["value"]</code> indicates that only the "value" field will be fetched.</li>
+</ul>
+</li>
+<li>
+<p><strong>facets</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>object</code></li>
+<li>
+<p><strong>Description</strong>: Contains filtering options for the data.</p>
+</li>
+<li>
+<p><strong>fueltype</strong>: </p>
+</li>
+<li><strong>Type</strong>: <code>array</code></li>
+<li><strong>Description</strong>: Specifies the types of fuel to include in the data fetch. </li>
+<li>
+<p><strong>Example</strong>: <code>["COL", "NG", "NUC", "OIL", "OTH", "SUN", "UNK", "WAT", "WND"]</code>.</p>
+</li>
+<li>
+<p><strong>respondent</strong>: </p>
+</li>
+<li><strong>Type</strong>: <code>array</code></li>
+<li><strong>Description</strong>: Specifies the respondents from whom the data is being fetched. </li>
+<li><strong>Example</strong>: <code>["AEC", "AECI", "AVA", "AVRN", "AZPS", ...]</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>start</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>string</code> or <code>null</code></li>
+<li><strong>Description</strong>: The start date for the data fetch. Setting this to <code>null</code> indicates that it will fetch all available data from the beginning.</li>
+</ul>
+</li>
+<li>
+<p><strong>end</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>string</code> or <code>null</code></li>
+<li><strong>Description</strong>: The end date for the data fetch. Setting this to <code>null</code> indicates that it will fetch data up to the current date.</li>
+</ul>
+</li>
+<li>
+<p><strong>sort</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>array</code></li>
+<li><strong>Description</strong>: Specifies the sorting order of the fetched data.</li>
+<li><strong>Example</strong>: 
+  <code>json
+  [
+      {"column": "fueltype", "direction": "desc"},
+      {"column": "respondent", "direction": "asc"},
+      {"column": "period", "direction": "asc"},
+      {"column": "value", "direction": "asc"}
+  ]</code>
+  This indicates sorting first by <code>fueltype</code> in descending order, followed by <code>respondent</code>, <code>period</code>, and <code>value</code> in ascending order.</li>
+</ul>
+</li>
+<li>
+<p><strong>offset</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>integer</code></li>
+<li><strong>Description</strong>: The offset for pagination. It determines where to start fetching records.</li>
+<li><strong>Example</strong>: <code>0</code> means start from the beginning.</li>
+</ul>
+</li>
+<li>
+<p><strong>length</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>integer</code></li>
+<li><strong>Description</strong>: The maximum number of records to fetch in a single request.</li>
+<li><strong>Example</strong>: <code>5000</code> indicates that up to 5000 records will be fetched.</li>
+</ul>
+</li>
+</ul>
+<h3 id="ingest">Ingest</h3>
+<p>The <code>ingest</code> section defines where the fetched data will be stored.</p>
+<ul>
+<li><strong>target</strong>: </li>
+<li><strong>Type</strong>: <code>string</code></li>
+<li><strong>Description</strong>: Specifies the target database for ingestion. </li>
+<li>
+<p><strong>Example</strong>: <code>"Xata"</code> indicates that the data will be ingested into the Xata database.</p>
+</li>
+<li>
+<p><strong>table_name</strong>: </p>
+</li>
+<li><strong>Type</strong>: <code>string</code></li>
+<li><strong>Description</strong>: The name of the table in the target database where the data will be stored.</li>
+<li><strong>Example</strong>: <code>"test"</code> indicates the name of the table.</li>
+</ul>
+<h3 id="rules">Rules</h3>
+<p>The <code>rules</code> section contains transformation rules for the data before ingestion.</p>
+<ul>
+<li><strong>symbol_replacement</strong>: </li>
+<li><strong>Type</strong>: <code>object</code></li>
+<li>
+<p><strong>Description</strong>: Rules for replacing specific symbols in the data.</p>
+</li>
+<li>
+<p><strong>replacements</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>array</code></li>
+<li><strong>Description</strong>: Specifies the symbols to replace and their replacements.</li>
+<li><strong>Example</strong>:
+  <code>json
+  [
+      {
+          "symbols": ["-"],
+          "replace_with": "_"
+      }
+  ]</code>
+  This indicates that all hyphens (<code>-</code>) in the data will be replaced with underscores (<code>_</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>null_value_replacement</strong>: </p>
+</li>
+<li><strong>Type</strong>: <code>object</code></li>
+<li>
+<p><strong>Description</strong>: Specifies how to handle null values in the data.</p>
+</li>
+<li>
+<p><strong>replace_with</strong>: </p>
+<ul>
+<li><strong>Type</strong>: <code>integer</code></li>
+<li><strong>Description</strong>: The value to replace nulls with.</li>
+<li><strong>Example</strong>: <code>0</code> indicates that null values will be replaced with <code>0</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This configuration file is essential for retrieving, transforming, and ingesting hourly generation data by energy source from the EIA API into the Xata database.
+```</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
