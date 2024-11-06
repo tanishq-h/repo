@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>XATA - Energy Efficiency ETL Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Energy Efficiency ETL Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Home</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../index.html" class="dropdown-item">Welcome to Energy Efficiency ETL Documentation</a>
+</li>
+                                    
+<li>
+    <a href="../../framework.html" class="dropdown-item">Framework</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Configs</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../configs/hourly_generation_by_energy_source.html" class="dropdown-item">Hourly Generation</a>
+</li>
+                                    
+<li>
+    <a href="../../configs/electricity_sales_to_customers.html" class="dropdown-item">Electricity Sales</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Fetch</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../fetch/provider/EIA.html" class="dropdown-item">EIA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Ingest</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="xata.html" class="dropdown-item active" aria-current="page">XATA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../main.html" class="nav-link">Main Logic</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../utils.html" class="nav-link">Utilities</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../../fetch/provider/EIA.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../main.html" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#xata-ingest-and-ingest-class-manager-documentation" class="nav-link">Xata Ingest and Ingest Class Manager Documentation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#classes" class="nav-link">Classes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="xata-ingest-and-ingest-class-manager-documentation">Xata Ingest and Ingest Class Manager Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>This documentation provides an overview of the <code>XataIngest</code> class and the <code>IngestClassManager</code> class, which are used for data ingestion into a XATA database using configuration files and pandas DataFrames. The <code>IngestClassManager</code> acts as a manager for different ingesting classes.</p>
+<h2 id="classes">Classes</h2>
+<h3 id="1-ingestclassmanager">1. <code>IngestClassManager</code></h3>
+<p>The <code>IngestClassManager</code> is responsible for managing the ingestion process. It allows for easy extension to include multiple ingesting classes.</p>
+<h4 id="initialization">Initialization</h4>
+<p><code>def __init__(self, config_path: str):</code>
+Initializes  the IngestClassManager with a specified configuration path and a mapping of available ingesting classes.</p>
+<h4 id="mapping">Mapping</h4>
+<p><code>self.ingesters = {'Xata': XataIngest}</code>:
+Maps the target for ingestion with the corresponding ingester class.</p>
+<h4 id="method-ingest_data">Method: ingest_data()</h4>
+<p><code>def ingest_data(self, df: pd.DataFrame, target: str):</code>This method ingests data using the specified target.</p>
+<h5 id="arguments">Arguments:</h5>
+<p><code>df</code>: The DataFrame containing data to be ingested.</p>
+<p><code>target</code>: The target for data ingestion (e.g., "Xata").</p>
+<h5 id="description">Description:</h5>
+<p>Looks up the appropriate ingester class based on the provided target name.
+If the target is not found, it logs an error and raises an exception.
+Creates an instance of the selected ingester class, passing the configuration path and DataFrame.
+Calls the ingest_data method of the ingester instance to perform the actual data ingestion.</p>
+<h3 id="2-xataingest">2. <code>XataIngest</code></h3>
+<p>The <code>XataIngest</code> class is designed to handle data ingestion into a XATA database.</p>
+<h4 id="initialization_1">Initialization</h4>
+<p><code>def __init__(self, config_path: str, df: pd.DataFrame):</code>
+Initializes  the XataIngest with a specified configuration path and DataFrame containing data to be ingested.</p>
+<h4 id="method-ingest_data_1">Method: ingest_data()</h4>
+<p><code>def ingest_data(self):</code>
+Ingests data into the specified database table.</p>
+<h5 id="description_1">Description</h5>
+<ul>
+<li>Establishes a connection to the XATA database using the DSN.</li>
+<li>Converts the DataFrame into a list of records.</li>
+<li>Constructs an SQL INSERT statement for the target table.</li>
+<li>Executes the insertion within a transaction to ensure data integrity.</li>
+<li>Commits the transaction if successful; rolls back if an error occurs.</li>
+<li>Closes the database connection and logs the outcome.</li>
+</ul>
+<h5 id="logging">Logging:</h5>
+<ul>
+<li>Logs the number of records inserted on success.</li>
+<li>Logs errors that occur during the insertion process.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
